@@ -1,4 +1,4 @@
-"""One Shot Battleship"""
+"""One Shot Battleship!"""
 
 __author__ = "730384323"
 
@@ -9,19 +9,14 @@ row_input: str = input("Guess a row: ")
 row_number: int = int(row_input)
 
 while row_number > 4 or row_number < 1:
-    print(f"The grid is only {grid_size} by {grid_size}.")
-    error1_input: str = input("Try again: ")
-    error1_number: int = int(error1_input)
-    row_number = error1_number
+    error1_input: int = int(input(f"The grid is only {grid_size} by {grid_size}. Try again: "))
+    row_number = error1_input
 
-column_input: str = input("Guess a column: ")
-column_number: int = int(column_input)
+column_number: int = int(input("Guess a column: "))
 
 while column_number > 4 or column_number < 1:
-    print(f"The grid is only {grid_size} by {grid_size}.")
-    error2_input: str = input("Try again: ")
-    error2_number: int = int(error2_input)
-    column_number = error2_number
+    error2_input: int = int(input(f"The grid is only {grid_size} by {grid_size}. Try again: "))
+    column_number = error2_input
 
 BLUE_BOX: str = "\U0001F7E6"
 RED_BOX: str = "\U0001F7E5"
@@ -30,16 +25,12 @@ result_box: str = ""
 row_count: int = 1
 
 if row_number == secret_row and column_number == secret_column:
-    print("Hit!")
     result_box = RED_BOX
 elif row_number == secret_row:
-    print("Close! Correct row, wrong column.")
     result_box = WHITE_BOX
 elif column_number == secret_column:
-    print("Close! Correct column, wrong row.")
     result_box = WHITE_BOX
 else:
-    print("Miss!")
     result_box = WHITE_BOX
 
 while row_count <= grid_size:
@@ -58,3 +49,16 @@ while row_count <= grid_size:
             column_count += 1  
     print(result_str)
     row_count += 1
+
+if row_number == secret_row and column_number == secret_column:
+    print("Hit!")
+    result_box = RED_BOX
+elif row_number == secret_row:
+    print("Close! Correct row, wrong column.")
+    result_box = WHITE_BOX
+elif column_number == secret_column:
+    print("Close! Correct column, wrong row.")
+    result_box = WHITE_BOX
+else:
+    print("Miss!")
+    result_box = WHITE_BOX
