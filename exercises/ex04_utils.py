@@ -6,6 +6,10 @@ __author__ = "730384323"
 def all(my_list: list[int], my_number: int) -> bool:
     """Returns a bool indicating whether or not all list ints are the same as a given int."""
     condition: bool = False
+    if len(my_list) == 0:
+        condition = False
+        print(condition)
+        return condition
     for item in my_list:
         if item == my_number:
             condition = True
@@ -16,13 +20,6 @@ def all(my_list: list[int], my_number: int) -> bool:
     print(condition)
     return True
         
-
-x: list[int] = [1, 2, 3]
-y: list[int] = [1, 2, 3]
-
-all(x, 1)
-all(y, 1)
-
 
 def max(my_list: list[int]) -> int:
     """Returns the largest # in a list. ValueError if list is empty."""
@@ -38,30 +35,55 @@ def max(my_list: list[int]) -> int:
     return max
 
 
-max(x)
-max(y)
-
-a: list[int] = [2, 4, 6]
-b: list[int] = [2, 4, 6]
-
 def is_equal(list_1: list[int], list_2: list[int]) -> bool:
     """Returns True if lists are equal, False otherwise."""
-    idx_1: int = 0
-    idx_2: int = 0
-    while idx_1 <= len(list_1) - 1 or idx_2 <= len(list_2) - 1:
-        if list_1[idx_1] == list_2[idx_2]:
-            equal: bool = True
-        else:
-            not_equal: bool = False
-            print(not_equal)
-            return not_equal
-        idx_1 += 1
-        idx_2 += 1
-    print(equal)
-    return equal
+    if len(list_1) == 0 and len(list_2) == 0:
+        print(True)
+        return True
+    if len(list_1) == 0 and len(list_2) != 0 or len(list_2) == 0 and len(list_1) != 0:
+        print(False)
+        return False
+    if len(list_1) == len(list_2):
+        idx: int = 0
+        condition: bool = False
+        while idx <= len(list_1) - 1:
+            if list_1[idx] == list_2[idx]:
+                condition = True
+            else:
+                condition = False
+                print(condition)
+                return condition
+            idx += 1
+        print(condition)
+        return condition
+    else:
+        correct: bool = False
+        for elem in list_1:
+            for item in list_2:
+                if item == elem:
+                    correct = True
+                else:
+                    correct = False
+                    print(correct)
+                    return correct
+        for item in list_2:
+            for elem in list_1:
+                if elem == item:
+                    correct = True
+                else:
+                    correct = False
+                    print(correct)
+                    return correct
+        print(correct)
+        return correct
 
+
+a: list[int] = []
+b: list[int] = []
+c: list[int] = [1, 0, 1]
 
 is_equal(a, b)
+is_equal(a, c)
 
 
 def extend(list_1: list[int], list_2: list[int]) -> None:
@@ -69,6 +91,3 @@ def extend(list_1: list[int], list_2: list[int]) -> None:
     for item in list_2:
         list_1.append(item)
     print(list_1)
-
-
-extend(a, b)
